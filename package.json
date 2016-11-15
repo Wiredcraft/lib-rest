@@ -1,6 +1,6 @@
 {
   "name": "lib-rest",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Base libraries and classes for doing HTTP requests, in the RESTful manner.",
   "author": {
     "name": "Wiredcraft",
