@@ -162,4 +162,100 @@ describe('Common REST CRUD', () => {
     });
   });
 
+  it('can post to a child path', () => {
+    env.set('X-MOCK-LOREM', 200);
+    return lorem.post('a9ba2379-ae7a-4cbf-b3a8-284d7aa54a6e/child', { name: 'Child' }).spread((res, body) => {
+      res.should.be.Object();
+      res.should.have.property('statusCode', 200);
+      body.should.be.Object();
+      body.should.have.property('id', '1');
+      body.should.have.property('name', 'Child');
+    });
+  });
+
+  it('can post to a child path', () => {
+    env.set('X-MOCK-LOREM', 409);
+    return lorem.post('a9ba2379-ae7a-4cbf-b3a8-284d7aa54a6e/child', { name: 'Child' }).then(() => {
+      throw new Error('expected an error');
+    }, (err) => {
+      err.should.be.Error();
+      err.should.have.property('statusCode', 409);
+      err.should.have.property('code', 40900);
+    });
+  });
+
+  it('can post to a child path', () => {
+    env.set('X-MOCK-LOREM', 500);
+    return lorem.post('a9ba2379-ae7a-4cbf-b3a8-284d7aa54a6e/child', { name: 'Child' }).then(() => {
+      throw new Error('expected an error');
+    }, (err) => {
+      err.should.be.Error();
+      err.should.have.property('statusCode', 500);
+    });
+  });
+
+  it('can get with a query string', () => {
+    env.set('X-MOCK-LOREM', 200);
+    return lorem.get({ name: 'Ipsum' }).spread((res, body) => {
+      res.should.be.Object();
+      res.should.have.property('statusCode', 200);
+      body.should.be.Object();
+      body.should.have.property('id', 'a9ba2379-ae7a-4cbf-b3a8-284d7aa54a6e');
+      body.should.have.property('name', 'Ipsum');
+    });
+  });
+
+  it('can get with a query string', () => {
+    env.set('X-MOCK-LOREM', 404);
+    return lorem.get({ name: 'Ipsum' }).then(() => {
+      throw new Error('expected an error');
+    }, (err) => {
+      err.should.be.Error();
+      err.should.have.property('statusCode', 404);
+      err.should.have.property('code', 40400);
+    });
+  });
+
+  it('can get with a query string', () => {
+    env.set('X-MOCK-LOREM', 500);
+    return lorem.get({ name: 'Ipsum' }).then(() => {
+      throw new Error('expected an error');
+    }, (err) => {
+      err.should.be.Error();
+      err.should.have.property('statusCode', 500);
+    });
+  });
+
+  it('can get with a query string', () => {
+    env.set('X-MOCK-LOREM', 200);
+    return lorem.get({ name: 'Ipsum' }).spread((res, body) => {
+      res.should.be.Object();
+      res.should.have.property('statusCode', 200);
+      body.should.be.Object();
+      body.should.have.property('id', 'a9ba2379-ae7a-4cbf-b3a8-284d7aa54a6e');
+      body.should.have.property('name', 'Ipsum');
+    });
+  });
+
+  it('can get with a query string', () => {
+    env.set('X-MOCK-LOREM', 404);
+    return lorem.get({ name: 'Ipsum' }).then(() => {
+      throw new Error('expected an error');
+    }, (err) => {
+      err.should.be.Error();
+      err.should.have.property('statusCode', 404);
+      err.should.have.property('code', 40400);
+    });
+  });
+
+  it('can get with a query string', () => {
+    env.set('X-MOCK-LOREM', 500);
+    return lorem.get({ name: 'Ipsum' }).then(() => {
+      throw new Error('expected an error');
+    }, (err) => {
+      err.should.be.Error();
+      err.should.have.property('statusCode', 500);
+    });
+  });
+
 });

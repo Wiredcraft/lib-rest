@@ -49,64 +49,64 @@ describe('The Rest class', () => {
   });
 
   it('should work with a root path', () => {
-    const base = new Rest({ baseUrl: host, rootPath: 'ping' });
-    return base.api.get().request().spread((res, body) => {
+    const rest = new Rest({ baseUrl: host, rootPath: 'ping' });
+    return rest.get().spread((res, body) => {
       res.should.be.Object();
       res.should.have.property('statusCode', 200);
     });
   });
 
   it('should work with a root path', () => {
-    const base = new Rest({ baseUrl: host, rootPath: '/ping' });
-    return base.api.get().request().spread((res, body) => {
+    const rest = new Rest({ baseUrl: host, rootPath: '/ping' });
+    return rest.get().spread((res, body) => {
       res.should.be.Object();
       res.should.have.property('statusCode', 200);
     });
   });
 
   it('should work with a root path', () => {
-    const base = new Rest({ baseUrl: host, rootPath: 'ping/' });
-    return base.api.get().request().spread((res, body) => {
+    const rest = new Rest({ baseUrl: host, rootPath: 'ping/' });
+    return rest.get().spread((res, body) => {
       res.should.be.Object();
       res.should.have.property('statusCode', 200);
     });
   });
 
   it('should work with a root path', () => {
-    const base = new Rest({ baseUrl: host, rootPath: '/ping/' });
-    return base.api.get().request().spread((res, body) => {
+    const rest = new Rest({ baseUrl: host, rootPath: '/ping/' });
+    return rest.get().spread((res, body) => {
       res.should.be.Object();
       res.should.have.property('statusCode', 200);
     });
   });
 
   it('should work with a root path', () => {
-    const base = new Rest({ baseUrl: host, rootPath: 'ping/pong' });
-    return base.api.get().request().spread((res, body) => {
+    const rest = new Rest({ baseUrl: host, rootPath: 'ping/pong' });
+    return rest.get().spread((res, body) => {
       res.should.be.Object();
       res.should.have.property('statusCode', 200);
     });
   });
 
   it('should work with a root path', () => {
-    const base = new Rest({ baseUrl: host, rootPath: '/ping/pong' });
-    return base.api.get().request().spread((res, body) => {
+    const rest = new Rest({ baseUrl: host, rootPath: '/ping/pong' });
+    return rest.get().spread((res, body) => {
       res.should.be.Object();
       res.should.have.property('statusCode', 200);
     });
   });
 
   it('should work with a root path', () => {
-    const base = new Rest({ baseUrl: host, rootPath: 'ping/pong/' });
-    return base.api.get().request().spread((res, body) => {
+    const rest = new Rest({ baseUrl: host, rootPath: 'ping/pong/' });
+    return rest.get().spread((res, body) => {
       res.should.be.Object();
       res.should.have.property('statusCode', 200);
     });
   });
 
   it('should work with a root path', () => {
-    const base = new Rest({ baseUrl: host, rootPath: '/ping/pong/' });
-    return base.api.get().request().spread((res, body) => {
+    const rest = new Rest({ baseUrl: host, rootPath: '/ping/pong/' });
+    return rest.get().spread((res, body) => {
       res.should.be.Object();
       res.should.have.property('statusCode', 200);
     });

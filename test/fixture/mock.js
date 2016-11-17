@@ -18,6 +18,11 @@ const sampleLoremNew = {
   updatedAt: '2016-03-04T05:06:07.123Z'
 };
 
+const sampleChildNew = {
+  id: '1',
+  name: 'Child'
+};
+
 function mock(host, options) {
 
   return nock(host, options)
@@ -33,6 +38,12 @@ function mock(host, options) {
     .reply(200)
 
   .get('/ping/pong')
+    .reply(200)
+
+  .get('/ping/')
+    .reply(200)
+
+  .get('/ping/pong/')
     .reply(200)
 
   // POST.
@@ -85,6 +96,35 @@ function mock(host, options) {
 
   .delete(`/lorems/${sampleLorem.id}`)
     .matchHeader('X-MOCK-LOREM', 500)
+    .reply(500)
+
+  // POST to a child.
+  .post(`/lorems/${sampleLorem.id}/child`, { name: 'Child' })
+    .matchHeader('X-MOCK-LOREM', 200)
+    .reply(200, sampleChildNew)
+
+  .post(`/lorems/${sampleLorem.id}/child`, { name: 'Child' })
+    .matchHeader('X-MOCK-LOREM', 409)
+    .reply(409, { 'error': { 'statusCode': 409, 'code': 40900, 'message': '...' } })
+
+  .post(`/lorems/${sampleLorem.id}/child`, { name: 'Child' })
+    .matchHeader('X-MOCK-LOREM', 500)
+    .reply(500)
+
+  // GET with query string.
+  .get('/lorems/')
+    .matchHeader('X-MOCK-LOREM', 200)
+    .query({ name: 'Ipsum' })
+    .reply(200, sampleLorem)
+
+  .get('/lorems/')
+    .matchHeader('X-MOCK-LOREM', 404)
+    .query({ name: 'Ipsum' })
+    .reply(404, { 'error': { 'statusCode': 404, 'code': 40400, 'message': '...' } })
+
+  .get('/lorems/')
+    .matchHeader('X-MOCK-LOREM', 500)
+    .query({ name: 'Ipsum' })
     .reply(500)
 
   .persist();
