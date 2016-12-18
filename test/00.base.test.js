@@ -64,4 +64,28 @@ describe('The Base class', () => {
     });
   });
 
+  it('should work with a base URL', (done) => {
+    const base = new Base(host);
+    return base.rawApi.get().request((err, res, body) => {
+      if (err) {
+        return done(err);
+      }
+      res.should.be.Object();
+      res.should.have.property('statusCode', 200);
+      done();
+    });
+  });
+
+  it('should work with a base URL', (done) => {
+    const base = new Base(host + '/');
+    return base.rawApi.get().request((err, res, body) => {
+      if (err) {
+        return done(err);
+      }
+      res.should.be.Object();
+      res.should.have.property('statusCode', 200);
+      done();
+    });
+  });
+
 });
