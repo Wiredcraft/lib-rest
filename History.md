@@ -1,4 +1,9 @@
 
+0.1.2 / 2016-12-18
+==================
+
+  * Added a set of "raw" request APIs that don't use Promise.
+
 0.1.1 / 2016-11-17
 ==================
 
