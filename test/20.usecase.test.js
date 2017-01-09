@@ -133,6 +133,38 @@ describe('Common REST CRUD', () => {
     });
   });
 
+  it('can patch', () => {
+    env.set('X-MOCK-LOREM', 200);
+    return lorem.patch('a9ba2379-ae7a-4cbf-b3a8-284d7aa54a6e', { name: 'Dolor' }).spread((res, body) => {
+      res.should.be.Object();
+      res.should.have.property('statusCode', 200);
+      body.should.be.Object();
+      body.should.have.property('id', 'a9ba2379-ae7a-4cbf-b3a8-284d7aa54a6e');
+      body.should.have.property('name', 'Dolor');
+    });
+  });
+
+  it('can patch', () => {
+    env.set('X-MOCK-LOREM', 404);
+    return lorem.patch('a9ba2379-ae7a-4cbf-b3a8-284d7aa54a6e', { name: 'Dolor' }).then(() => {
+      throw new Error('expected an error');
+    }, (err) => {
+      err.should.be.Error();
+      err.should.have.property('statusCode', 404);
+      err.should.have.property('code', 40400);
+    });
+  });
+
+  it('can patch', () => {
+    env.set('X-MOCK-LOREM', 500);
+    return lorem.patch('a9ba2379-ae7a-4cbf-b3a8-284d7aa54a6e', { name: 'Dolor' }).then(() => {
+      throw new Error('expected an error');
+    }, (err) => {
+      err.should.be.Error();
+      err.should.have.property('statusCode', 500);
+    });
+  });
+
   it('can delete', () => {
     env.set('X-MOCK-LOREM', 204);
     return lorem.delete('a9ba2379-ae7a-4cbf-b3a8-284d7aa54a6e').spread((res, body) => {

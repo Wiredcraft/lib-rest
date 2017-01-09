@@ -85,6 +85,19 @@ function mock(host, options) {
     .matchHeader('X-MOCK-LOREM', 500)
     .reply(500)
 
+  // PATCH.
+  .patch(`/lorems/${sampleLorem.id}`, { name: 'Dolor' })
+    .matchHeader('X-MOCK-LOREM', 200)
+    .reply(200, Object.assign({}, sampleLorem, { name: 'Dolor' }))
+
+  .patch(`/lorems/${sampleLorem.id}`, { name: 'Dolor' })
+    .matchHeader('X-MOCK-LOREM', 404)
+    .reply(404, { 'error': { 'statusCode': 404, 'code': 40400, 'message': '...' } })
+
+  .patch(`/lorems/${sampleLorem.id}`, { name: 'Dolor' })
+    .matchHeader('X-MOCK-LOREM', 500)
+    .reply(500)
+
   // DELETE.
   .delete(`/lorems/${sampleLorem.id}`)
     .matchHeader('X-MOCK-LOREM', 204)
