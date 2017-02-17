@@ -26,7 +26,7 @@
   "homepage": "https://github.com/Wiredcraft/lib-rest",
   "dependencies": {
     "bluebird": "^3.4.7",
-    "debug": "^2.6.0",
+    "debug": "^2.6.1",
     "dot-prop": "^4.1.0",
     "file-register": "^0.1.0",
     "handle-http-error": "^0.1.0",
@@ -34,12 +34,12 @@
     "request": "^2.79.0"
   },
   "devDependencies": {
-    "coveralls": "^2.11.12",
+    "coveralls": "^2.11.16",
     "istanbul": "^0.4.4",
     "jscs": "^3.0.7",
     "mocha": "^3.2.0",
-    "nock": "^9.0.2",
-    "should": "^11.1.2"
+    "nock": "^9.0.6",
+    "should": "^11.2.0"
   },
   "scripts": {
     "test": "make test"
