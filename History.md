@@ -1,4 +1,10 @@
 
+0.1.4 / 2017-02-19
+==================
+
+  * Moved default error handler from Rest to Base.
+  * Updated modules and fixed mock.
+
 0.1.3 / 2017-01-09
 ==================
 
