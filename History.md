@@ -1,4 +1,10 @@
 
+0.1.5 / 2017-10-24
+==================
+
+  * Handle the case where root path is empty.
+  * Maintenance: update modules etc.
+
 0.1.4 / 2017-02-19
 ==================
 
