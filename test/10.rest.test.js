@@ -128,4 +128,20 @@ describe('The Rest class', () => {
     });
   });
 
+  it('should work with options', () => {
+    const rest = new Rest({ baseUrl: host, rootPath: '/ping/pong/' });
+    return rest.get({}, { headers: { 'x-transaction-id': '1234' } }).spread((res, body) => {
+      res.should.be.Object();
+      res.should.have.property('statusCode', 200);
+    });
+  });
+
+  it('should work with options', () => {
+    const rest = new Rest({ baseUrl: host, rootPath: '/lorems/' });
+    return rest.post({ name: 'Dolor' }, { headers: { 'X-MOCK-LOREM': '200' } }).spread((res, body) => {
+      res.should.be.Object();
+      res.should.have.property('statusCode', 200);
+    });
+  });
+
 });
